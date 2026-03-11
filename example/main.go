@@ -1,19 +1,21 @@
 package main
 
 import (
-	"time"
+	"fmt"
 
 	"github.com/tobiashort/term-go"
 )
 
 func main() {
+	fmt.Println("Is a tty:", term.IsTerminal())
 	err := term.MakeRaw()
 	if err != nil {
 		panic(err)
 	}
-	time.Sleep(2 * time.Second)
+	fmt.Println("Switched to raw mode")
 	err = term.Restore()
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("Restored to original mode")
 }
