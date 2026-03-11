@@ -16,6 +16,7 @@ int term_make_raw() {
 	}
 	DWORD raw_mode = term_mode;
 	raw_mode &= ~(ENABLE_ECHO_INPUT | ENABLE_LINE_INPUT | ENABLE_PROCESSED_INPUT);
+	raw_mode |= ENABLE_VIRTUAL_TERMINAL_INPUT;
 	if (!SetConsoleMode(h_stdin, raw_mode)) {
 		return 2;
 	}
